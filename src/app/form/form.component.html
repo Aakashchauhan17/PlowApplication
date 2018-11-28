@@ -1,0 +1,54 @@
+<!-- <GridLayout rows="*,*,*,*,*" columns="*,*,*" >
+    <Label row="1" col="0" colSpan="2" text="950 Mason st, San Francisco, CA"  textWrap="true"></Label>
+    
+    
+    <Image row="1" col="2" src="res://location_icon" height="45" width="45" (tap)="onImage()" ></Image>
+    <Label row="2" col="0" colSpan="3" text="Clean off the parking lot and all of the sidewalks" textWrap="true"></Label>
+    <Label row="3" col="0" colSpan="3" text="Before Pictures" textWrap="true"></Label>
+    
+</GridLayout> -->
+<StackLayout>
+        <Label class="spaceMargin" horizontalAlignment="center" text="Mr. Plow " fontSize="40" color="#4e7ac7"></Label>
+    <Label class="spaceMargin" color="#4e7ac7" text="Job Details" fontSize="30" textWrap="true"></Label>
+    
+    <GridLayout class="spaceMargin" rows="auto,auto" columns="auto,auto,*">
+            <Label color="#4e7ac7" row="1" col="0" text="950 Mason st, San Francisco, CA"  textWrap="true"></Label>
+            <Image row="1" col="3" src="res://location_icon" height="45" width="45" (tap)="onImage()" ></Image>
+    </GridLayout>
+        <Label color="#4e7ac7" class="spaceMargin" text="Clean off the parking lot and all of the sidewalks" textWrap="true"></Label>
+        <Label color="#4e7ac7" class="spaceMargin" text="Before Pictures" textWrap="true"></Label>
+        <Image class="spaceMargin" horizontalAlignment="left" src="res://plus_icon" height="45" width="45" ></Image>
+        <Label color="#4e7ac7" class="spaceMargin" text="After Pictures" textWrap="true"></Label>
+        <Image class="spaceMargin" horizontalAlignment="left" src="res://plus_icon" height="45" width="45" ></Image>
+        <Label color="#4e7ac7" class="spaceMargin" text="Customer Signature" textWrap="true"></Label>
+        <StackLayout height="210">
+                <GridLayout rows="*, auto" columns="*, *">
+                        <StackLayout row="0" col="0" colspan="2" backgroundColor="#E0E0E0">
+                            <DrawingPad #signature penColor="#000000" penWidth="5"></DrawingPad>
+                        </StackLayout>
+                        <StackLayout row="1" col="0">
+                            <Button text="Reset" (tap)="reset()" class="btn btn-danger w-full"></Button>
+                        </StackLayout>
+                        <StackLayout row="1" col="1">
+                            <Button text="Submit" (tap)="send()" class="btn btn-primary w-full"></Button>
+                        </StackLayout>
+                    </GridLayout>
+        </StackLayout>
+        <GridLayout rows="*, auto, auto">
+                <ListView [items]="imageAssets">
+                    <ng-template let-image="item" let-i="index">
+                        <GridLayout columns="auto, *">
+                            <Image
+                                [width]="thumbSize" 
+                                [height]="thumbSize" 
+                                [src]="image" stretch="fill"></Image>
+                            <Label col="1" [text]="'image ' + i"></Label>
+                        </GridLayout>
+                    </ng-template>
+                </ListView>
+                
+                <Image [src]="imageSrc" *ngIf="isSingleMode" [width]="previewSize" [height]="previewSize" stretch="aspectFit"></Image>
+                <Button row="1" text="Pick Single" (tap)="onSelectSingleTap()" horizontalAlignment="center"></Button>
+                <Button row="2" text="Pick Multiple" (tap)="onSelectMultipleTap()" horizontalAlignment="center"></Button>
+            </GridLayout>
+</StackLayout>
